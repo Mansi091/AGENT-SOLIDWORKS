@@ -7,8 +7,11 @@ from sw_connection import SolidWorksConnection
 from extractor import DimensionExtractor
 
 
-PART_PATH   = r"C:\Users\Mansi\OneDrive\Desktop\Internship\Solidworks-agent\part2.SLDPRT"
-OUTPUT_PATH = r"C:\Users\Mansi\OneDrive\Desktop\part2\output\dimensions.json"
+PART_PATH = r"C:\Users\Mansi\OneDrive\Desktop\Internship\Solidworks-agent\sheet-metal-part3.SLDPRT"
+
+# Dynamically name the output JSON file based on the part filename
+part_filename = os.path.splitext(os.path.basename(PART_PATH))[0]
+OUTPUT_PATH = os.path.join(r"C:\Users\Mansi\OneDrive\Desktop\part2\output", f"dimensions_{part_filename}.json")
 
 def main():
     print("=" * 50)
@@ -53,7 +56,7 @@ def main():
         json.dump(data, f, indent=2)
 
     print(f"Saved to: {OUTPUT_PATH}")
-    print("\nDone!")
+
 
 if __name__ == "__main__":
     main()
